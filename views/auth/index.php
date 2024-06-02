@@ -9,7 +9,6 @@ if (isset($_SESSION['username'])) {
     exit(); // Asegurar que la ejecución del script se detenga después de la redirección
 }
 
-
 include '../layouts/header.php';
 
 ?>
