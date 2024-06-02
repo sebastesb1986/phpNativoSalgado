@@ -26,6 +26,6 @@ include '../layouts/header.php';
             <input type="password" class="form-control" id="password" name="password" value="<?= !empty($dato['password']) ? $dato['password'] : '' ?>">
             </div>
         </div>
-        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="submit" class="btn btn-info">Guardar</button>
     </form>
 </body>

@@ -18,6 +18,7 @@ include '../layouts/header.php';
     <div class="container">
         <div>
             <a href="./user.php" class="btn btn-primary">Crear usuario</a>
+            <a href="./search.php" class="text-warning">Buscar usuario</a>
             <a href="#" class="text-primary">Bienvenido <?= $_SESSION["username"] ?></a>
             <a href="../../query/auth/logout.php">Cerrar sesión</a>
         </div>
