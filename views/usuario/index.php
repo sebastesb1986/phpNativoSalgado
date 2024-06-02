@@ -1,20 +1,26 @@
 <?php
 
-require_once '../../conexion/db.php';
-require_once '../../query/Usuario.php';
-include '../layouts/header.php';
+session_start();
 
-// Crear una instancia de la clase Usuario pasando la conexión como parámetro
-$usuario = new Usuario($conn);
-$id = !empty($_GET['id']) ? $_GET['id'] : "" ;
-// Obtener los datos de los usuarios
-$datos = $usuario->mostrarUsuarios();
-//$pato = $usuario->deleteUser();
+// Verificar si la sesión está iniciada
+if (!isset($_SESSION["username"])) {
+    // Si la sesión no está iniciada, redirigir al usuario al inicio de sesión
+    header("Location: ../../views/auth/index.php");
+    exit(); // Asegurarse de detener la ejecución del script después de redireccionar
+}
+
+require_once '../../query/user/lista.php';
+include '../layouts/header.php';
 
 ?>
 
 <body>
     <div class="container">
+        <div>
+            <a href="./user.php" class="btn btn-primary">Crear usuario</a>
+            <a href="#" class="text-primary">Bienvenido <?= $_SESSION["username"] ?></a>
+            <a href="../../query/auth/logout.php">Cerrar sesión</a>
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -32,8 +38,8 @@ $datos = $usuario->mostrarUsuarios();
                         <td><?= $dato['password'] ?></td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex">
-                                <a href="update.php?id=<?=$dato['id']?>" class="btn btn-sm btn-warning">Edit</a>&nbsp;
-                                <a href="<?=$dato['id']?>" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="./user.php?id=<?=$dato['id']?>" class="btn btn-sm btn-warning">Edit</a>&nbsp;
+                                <a href="../../query/user/delete.php?id=<?=$dato['id']?>" class="btn btn-sm btn-danger">Delete</a>
                             </div>
                         </td>
                     </tr>
