@@ -1,5 +1,14 @@
 <?php
 
+session_start();
+
+// Verificar si la sesión está iniciada
+if (!isset($_SESSION["username"])) {
+    // Si la sesión no está iniciada, redirigir al usuario al inicio de sesión
+    header("Location: ../../views/auth/index.php");
+    exit(); // Asegurarse de detener la ejecución del script después de redireccionar
+}
+
 include '../../conexion/db.php';
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : "";

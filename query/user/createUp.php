@@ -42,7 +42,7 @@ try{
     }
     else {
         // Si el formulario no se envió correctamente
-        echo "Acceso no autorizado.";
+        header('location: ../../views/usuario/index.php');
     }
 
 }
