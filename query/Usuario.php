@@ -51,7 +51,7 @@ class Usuario {
 
         } catch (PDOException $e) {
             // Manejar errores
-            echo "Error: " . $e->getMessage();
+            die("Error: " .$e->getMessage());
             return false; // Otra acción en caso de error
         }
 
@@ -81,7 +81,7 @@ class Usuario {
 
         } catch (PDOException $e) {
             // Manejar errores
-            echo "Error: " . $e->getMessage();
+            die("Error: " .$e->getMessage());
             return false; // Otra acción en caso de error
         }
     }
@@ -111,7 +111,7 @@ class Usuario {
 
         } catch (PDOException $e) {
             // Manejar errores
-            echo "Error: " . $e->getMessage();
+            die("Error: " .$e->getMessage());
             return false; // Otra acción en caso de error
         }
     }
@@ -133,7 +133,7 @@ class Usuario {
 
         } catch (PDOException $e) {
             // Manejar errores
-            echo "Error: " . $e->getMessage();
+            die("Error: " .$e->getMessage());
             return false; // Otra acción en caso de error
         }
     }
