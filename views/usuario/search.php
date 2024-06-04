@@ -26,27 +26,27 @@ include '../layouts/header.php';
     </form>
 
     <?php
-    // Verificar si se ha enviado el formulario de búsqueda
-    if (isset($_POST["search"])):
+        // Verificar si se ha enviado el formulario de búsqueda
+        if (isset($_POST["search"])):
         // Aquí incluirías el código PHP para realizar la búsqueda y mostrar los resultados
         include '../../query/user/search.php';
     ?>
 
         <!-- Tabla de resultados -->
-        <table>
-            <thead>
-                <th>Nombre</th>
-            </thead>
-            <tbody>
-                <?php if (isset($_POST["search"]) && !empty($_POST["search"])): ?>
+        <?php if (isset($_POST["search"]) && !empty($_POST["search"])): ?>
+            <table>
+                <thead>
+                    <th>Nombre</th>
+                </thead>
+                <tbody>
                     <?php foreach($datos as $dato): ?>
                         <tr>
                             <td><?= $dato['username'] ?></td>
                         </tr>
                     <?php endforeach; ?>
-                <?php endif ?>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        <?php endif ?>
 
     <?php endif; // Cierre del bloque PHP para verificar si se envió el formulario de búsqueda ?>
 

@@ -6,8 +6,8 @@ include '../../conexion/db.php';
 $query = "";
 
 // Campos a gestionar
-$id = (isset($_GET["id"])) ? $_GET["id"] : "";
 $username = trim(strip_tags($_POST["username"]));
+$city_id = $_POST["city_id"];
 $password = $_POST["password"];
 
 try{
@@ -15,10 +15,15 @@ try{
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Consultas sql
-        if (!empty($id)) {
-            $query = "UPDATE usuarios SET username = :username, password = :password WHERE id = $id";
+        if(isset($_GET["id"])) {
+
+            $id = $_GET["id"];
+            $query = "UPDATE usuarios SET username = :username, city_id = :city_id, password = :password WHERE id = $id";
+
         } else {
-            $query = "INSERT INTO usuarios(username, password) VALUES(:username, :password)";
+
+            $query = "INSERT INTO usuarios(username, city_id, password) VALUES(:username, :city_id, :password)";
+
         }
 
         // Preparar consulta
@@ -26,7 +31,9 @@ try{
 
         // Vincular parametros y limpiar campos para evitar ataques
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->bindParam(':city_id', $city_id, PDO::PARAM_INT);
         $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+
 
         // Obtener datos
         $stmt->execute();

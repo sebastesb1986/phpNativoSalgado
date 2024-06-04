@@ -2,11 +2,11 @@
 
 include '../../conexion/db.php';
 
-$id = (isset($_GET["id"])) ? $_GET["id"] : "";
-
 try{
 
-    if($id){
+    if(isset($_GET["id"])){
+
+        $id = $_GET["id"];
         $query = "SELECT * FROM usuarios WHERE id = $id";
 
         // Preparar la sentencia

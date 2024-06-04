@@ -11,13 +11,11 @@ if (!isset($_SESSION["username"])) {
 
 include '../../conexion/db.php';
 
-$id = (isset($_GET["id"])) ? $_GET["id"] : "";
-
 try{
-    // Campos a gestionar
-
     // Consultas sql
-    if(!empty($id)){
+    if(isset($_GET["id"])){
+
+        $id = $_GET["id"];
         // Consulta preparada para eliminar un usuario por su ID
         $query = "DELETE FROM usuarios WHERE id = $id";
 

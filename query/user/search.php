@@ -2,11 +2,11 @@
 
 include '../../conexion/db.php';
 
-$search =  isset($_POST["search"]) ? $_POST["search"] : '';
-
 try{
     
-    if(!empty($search)){
+    if($_POST["search"]){
+
+        $search = $_POST["search"];
         // Query SQL
         $query = "SELECT * FROM usuarios WHERE username LIKE '%$search%' ";
 

@@ -25,18 +25,18 @@ include '../layouts/header.php';
         <table class="table">
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre de usuario</th>
-                <th scope="col">Contraseña</th>
-                <th scope="col">Acciones</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre de usuario</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($datos as $index => $dato): ?>
                     <tr>
                         <th scope='row'><?= $index + 1 ?></th>
-                        <th scope='row'><?= $dato['username'] ?></th>
-                        <td><?= $dato['password'] ?></td>
+                        <td><?= $dato['username'] ?></th>
+                        <td><?= $dato['city'] ?></td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex">
                                 <a href="./user.php?id=<?=$dato['id']?>" class="btn btn-sm btn-warning">Edit</a>&nbsp;
